@@ -1,0 +1,12 @@
+#lang sicp
+
+; 1.1.7: Example - Square Roots by Newton's Method
+
+(define (square x) (* x x))
+
+;(define (sqrt x)
+;  (the y (and (> y 0)
+;              (= (square y) x))))
+
+
+; 0.5  2/0.5 = 4  (0.5 + 4) / 2 = 2.25

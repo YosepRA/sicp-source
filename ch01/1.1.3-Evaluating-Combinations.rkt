@@ -2,4 +2,6 @@
 
 ; 1.1.3 - Evaluating Combinations
 
-
+(* (+ 2
+      (* 4 6))
+   (+ 3 5 7))

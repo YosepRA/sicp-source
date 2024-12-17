@@ -1,0 +1,148 @@
+#lang sicp
+
+; Exercise 1.1 ~ 1.5
+
+; Write your answer above the statement/question. Mark your answer with
+; letter "A" and book's correct answer with "C" (if any).
+
+; ==================================================================== ;
+
+; 1.1: Below is a sequence of expressions. What is the result printed
+; by the interpreter in response to each expression? Assume that the
+; sequence is to be evaluated in the order in which it is presented.
+
+;; A: 10
+;10
+;
+;; A: 12
+;(+ 5 3 4)
+;
+;; A: 8
+;(- 9 1)
+;
+;; A: 3
+;(/ 6 2)
+;
+;; A: 6
+;(+ (* 2 4) (- 4 6))
+;
+;; A: a = 3
+;(define a 3)
+;
+;; A: b = 4
+;(define b (+ a 1))
+;
+;; A: 19
+;(+ a b (* a b))
+;
+;; A: 1
+;; C: -1 (oops)
+;(- a b)
+;
+;; A: 4
+;(if (and (> b a) (< b (* a b))) b a)
+;
+;; A: 16
+;(cond ((= a 4) 6)
+;      ((= b 4) (+ 6 7 a))
+;      (else 25))
+;
+;; A: 6
+;(+ 2 (if (> b a) b a))
+;
+;; A: 16
+;(* (cond ((> a b) a)
+;         ((< a b) b)
+;         (else -1))
+;    (+ a 1))
+
+; ==================================================================== ;
+
+; 1.2: Translate the following expression into prefix form.
+; Note: Mathematical equation can be seen in the book.
+
+; A: 14.8 / -60 = -0.2467
+;(/ (+ 5 4 (- 2 (- 3 (+ 6 (/ 4 5)))))
+;   (* 3 (- 6 2) (- 2 7)))
+
+; ==================================================================== ;
+
+; 1.3: Define a procedure that takes three numbers as arguments and
+; returns the sum of the squares of the two larger numbers.
+
+(define (square x) (* x x))
+
+(define (sumSquare x y) (+ (square x) (square y)))
+
+(define (largerSquare x y z)
+  (cond ((and (> x z) (> y z)) (sumSquare x y))
+        ((and (> x y) (> z y)) (sumSquare x z))
+        ((and (> y x) (> z x)) (sumSquare y z))))
+
+(largerSquare 1 2 3) ; 13
+(largerSquare 4 2 6) ; 52
+(largerSquare 10 8 4) ; 164
+
+; ==================================================================== ;
+
+; 1.4:
+
+; Using 'if' to choose the operation.
+(define (a-plus-abs-b a b)
+  ((if (> b 0) + -) a b))
+
+; ==================================================================== ;
+
+; 1.5: It's a test to determine whether the interpreter is using
+; applicative-order evaluation or normal-order evaluation. Observe
+; the model below, and explain your conclusion.
+
+; A: In short, procedure 'p' is a procedure that will continuously
+; invoke itself. If the interpreter is using the applicative-order
+; evaluation, then 'p' will be invoked when the interpreter is evaluating
+; the arguments. Thus, resulting in an inevitable infinite loop.
+; Otherwise, such as in the case of procedure 'test', if the interpeter
+; is using normal-order evaluation, it won't evaluate the arguments.
+; Therefore, passing the execution of 'p' and straight to the 'test'
+; body. When the interpreter reaches 'test' body, it will never execute
+; 'p' as long as I put a value of '0' as 'x' argument.
+
+(define (p) (p))
+
+(define (test x y)
+  (if (= x 0) 0 y))
+
+(test 0 (p))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
