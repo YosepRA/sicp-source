@@ -18,6 +18,4 @@
 
 (+ 100
    (- 10
-      (+ 3 2)
-      )
-   ) ; 105. Nested operation.
+      (+ 3 2))) ; 105. Nested operation.

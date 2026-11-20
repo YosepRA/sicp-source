@@ -8,7 +8,11 @@
 
 (square (+ 2 10)) ; 144
 
+(square (+ 2 5))
+
 (square (square 10)) ; 10^4
+
+(square (square 3))
 
 (+ (square 2) (square 3)) ; 13
 
